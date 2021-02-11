@@ -50,8 +50,8 @@ class CardController extends Controller
                 'city' => 'required',
                 'phone' => 'required',
                 'currency' => 'required',
-                'balance' => 'required',
-                'pin' => 'required',
+                'balance' => 'required|integer',
+                'pin' => 'required|integer',
             ]
         );
 
@@ -94,13 +94,44 @@ class CardController extends Controller
         ], 200);
     }
 
-    public function update_pin(int $id)
+    public function update_pin(int $id, Request $request)
     {
-        dd('hit update_pin', $id);
+        $this->validate(
+            $request,
+            [
+                'pin' => 'required|integer',
+            ]
+        );
+
+        $card = Card::findOrFail($id);
+        $card->update([
+            'pin' => $request->input('pin')
+        ]);
+
+        return response([
+            'error' => false,
+            'card' => $card
+        ], 200);
     }
 
-    public function load_balance(int $id)
+    public function load_balance(int $id, Request $request)
     {
-        dd('hit load_balance', $id);
+        $this->validate(
+            $request,
+            [
+                'balance' => 'required|integer',
+            ]
+        );
+
+        $card = Card::findOrFail($id);
+
+        $newBalance = $card->balance + $request->input('balance');
+
+        $card->update(['balance' => $newBalance]);
+
+        return response([
+            'error' => false,
+            'card' => $card
+        ], 200);
     }
 }

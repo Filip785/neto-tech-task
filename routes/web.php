@@ -32,9 +32,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
         $router->post('/create', 'CardController@create');
 
-        $router->get('/{id}/deactivate', 'CardController@deactivate');
-        $router->get('/{id}/activate', 'CardController@activate');
-        $router->get('/{id}/update_pin', 'CardController@update_pin');
-        $router->get('/{id}/load_balance', 'CardController@load_balance');
+        $router->patch('/{id}/deactivate', 'CardController@deactivate');
+        $router->patch('/{id}/activate', 'CardController@activate');
+        $router->patch('/{id}/update_pin', 'CardController@update_pin');
+        $router->patch('/{id}/load_balance', 'CardController@load_balance');
     });
 });
