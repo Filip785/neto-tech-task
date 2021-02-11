@@ -11,7 +11,10 @@ class CardController extends Controller
 {
     public function get(int $id)
     {
-        return Card::findOrFail($id);
+        return response([
+            'error' => false,
+            'card' => Card::with('country')->findOrFail($id)
+        ], 200);
     }
 
     public function get_balance(int $id)

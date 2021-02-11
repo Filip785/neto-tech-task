@@ -17,4 +17,9 @@ class Card extends Model
         'first_name', 'last_name', 'address', 'city',
         'country_id', 'phone', 'currency', 'balance', 'pin', 'status'
     ];
+
+    public function country()
+    {
+        return $this->hasOne(Country::class, 'id', 'country_id');
+    }
 }
