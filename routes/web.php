@@ -23,18 +23,17 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/{id}', 'CountryController@get');
     });
 
-    // these will have to have authentication
     $router->group(['prefix' => 'cards'], function () use ($router) {
-        $router->get('/{id}', 'CardController@get');
-        $router->get('/{id}/balance', 'CardController@get_balance');
-        $router->get('/{id}/pin', 'CardController@get_pin');
-        $router->get('/{id}/history', 'CardController@get_history');
+        $router->get('/{id}', ['middleware' => 'auth', 'uses' => 'CardController@get']);
+        $router->get('/{id}/balance', ['middleware' => 'auth', 'uses' => 'CardController@get_balance']);
+        $router->get('/{id}/pin', ['middleware' => 'auth', 'uses' => 'CardController@get_pin']);
+        $router->get('/{id}/history', ['middleware' => 'auth', 'uses' => 'CardController@get_history']);
 
-        $router->post('/create', 'CardController@create');
+        $router->post('/create', ['middleware' => 'auth', 'uses' => 'CardController@create']);
 
-        $router->patch('/{id}/deactivate', 'CardController@deactivate');
-        $router->patch('/{id}/activate', 'CardController@activate');
-        $router->patch('/{id}/update_pin', 'CardController@update_pin');
-        $router->patch('/{id}/load_balance', 'CardController@load_balance');
+        $router->patch('/{id}/deactivate', ['middleware' => 'auth', 'uses' => 'CardController@deactivate']);
+        $router->patch('/{id}/activate', ['middleware' => 'auth', 'uses' => 'CardController@activate']);
+        $router->patch('/{id}/update_pin', ['middleware' => 'auth', 'uses' => 'CardController@update_pin']);
+        $router->patch('/{id}/load_balance', ['middleware' => 'auth', 'uses' => 'CardController@load_balance']);
     });
 });

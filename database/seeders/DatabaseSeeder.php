@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Card;
 use App\Models\Country;
 use Illuminate\Database\Seeder;
 
@@ -270,6 +271,28 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // $this->call('UsersTableSeeder');
+        Card::create([
+            'first_name' => 'User',
+            'last_name' => 'Number 1',
+            'address' => 'Some Address',
+            'country_id' => 195,
+            'city' => 'Belgrade',
+            'phone' => '12345',
+            'currency' => 'RSD',
+            'balance' => 100,
+            'pin' => 1997
+        ]);
+
+        Card::create([
+            'first_name' => 'User',
+            'last_name' => 'Number 2',
+            'address' => 'Some Address',
+            'city' => 'Haifa',
+            'country_id' => 107,
+            'phone' => '12345',
+            'currency' => 'ILS',
+            'balance' => 100,
+            'pin' => 1998
+        ]);
     }
 }
