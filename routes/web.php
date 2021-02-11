@@ -16,3 +16,10 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->group(['prefix' => 'countries'], function () use ($router) {
+        $router->get('/', 'CountryController@index');
+        $router->get('/{id}', 'CountryController@get');
+    });
+});
