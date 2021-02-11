@@ -1,24 +1,14 @@
-# Lumen PHP Framework
+# Neto Tech Task
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+### Installation Instructions
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
-
-## Official Documentation
-
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+To correctly setup this project on your machine locally, follow these instructions:
+1. Clone the repository by running, using `git clone https://github.com/Filip785/neto-tech-task.git`
+2. Navigate your CLI to `<project_root>` and install composer packages by running `composer update`.
+3. Once that is done, in `<project_root>` copy the `.env.example` file into `.env` in the same location.
+4. Create new database on your machine and insert its data (host, port, name, credentials) in the newly created `.env` file
+5. Run migrations & seeds by running `php artisan migrate:fresh --seed` from `<project_root>`.
+6. Set your servers DocumentRoot to point to `<project_root>/public` folder.
+7. Run `php api-client/generate_key.php` from `<project_root>`. This will generate the API key that will be used for authentication `APIClient` requests to the API.
+8. To test usage of API client run `php api-client/usage.php`.
+9. Code for API client is in `<project_root>/api-client/`.
